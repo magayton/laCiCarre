@@ -30,7 +30,7 @@ jobs:
     - name: Prends ça chacalito
       uses: actions/upload-artifact@v4
       with:
-        name: ${{matrix.os}}-debug
+        name: ${{matrix.os}}-${{matrix.build_type}}
         path: |
-          target/debug/laCiCarre
+          target/${{matrix.build_type}}/laCiCarre
 
