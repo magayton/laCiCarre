@@ -14,12 +14,16 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        #version: [Release, Debug]
+        build_type: [release, debug]
     runs-on: ${{ matrix.os }}
     steps:
     - name: Get ço lô
       uses: actions/checkout@v4
     - name: Build
+      if: ${{matrix.build_type}} == release
+      run: cargo build --verbose --release
+    - name: Build
+      if: ${{matrix.build_type}} != release
       run: cargo build --verbose
     - name: Run tests
       run: cargo test --verbose
