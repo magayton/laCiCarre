@@ -20,9 +20,7 @@ jobs:
     - name: Get ço lô
       uses: actions/checkout@v4
     - name: Build
-      run: cargo build --verbose ${BUILD_TYPE}
-      env:
-        BUILD-TYPE: ${{matrix.build_type == 'release' && '--release' || ''}}
+      run: cargo build --verbose ${{matrix.build_type == 'release' && '--release' || ''}}
     - name: Run tests
       run: cargo test --verbose
     - name: Prends ça chacalito
